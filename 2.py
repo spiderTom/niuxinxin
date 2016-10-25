@@ -53,6 +53,9 @@ def checkUrlWithCp(cp):
             if link.get('href').find(".pdf") == -1 and link.get('href').find("..") == -1:
                 afterCheck.append(link.get('href'))
             elif link.get('href').find(".pdf") == -1 and link.get('href').find("topic") != -1:
+                temp = link.get('href')
+                temp = temp[3:]
+                temp = setting.contentUrl + temp
                 targetUrl.append(link.get('href'))
 
 #1. put first level url to list which need to be checked.
