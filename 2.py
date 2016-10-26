@@ -50,6 +50,7 @@ def checkUrlWithCp(cp):
     if result.status_code == 200:
         soup = BeautifulSoup(result.content)
         for link in soup.find_all('a'):
+            #if pdf do nothing, elseif
             if link.get('href').find(".pdf") == -1 and link.get('href').find("..") == -1:
                 afterCheck.append(link.get('href'))
             elif link.get('href').find(".pdf") == -1 and link.get('href').find("topic") != -1:
@@ -57,6 +58,9 @@ def checkUrlWithCp(cp):
                 temp = temp[3:]
                 temp = setting.contentUrl + temp
                 targetUrl.append(link.get('href'))
+
+            if link.get('href').find(".pdf") == -1:
+                if link.get('href').find("..") == -1 and link.get('href').find("..") == -1:
 
 #1. put first level url to list which need to be checked.
 print "1, put first level url to list which need to be checked."
